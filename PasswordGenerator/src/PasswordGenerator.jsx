@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import "./PasswordGenerator.css";
-import { useState, useCallback } from "react";
 
 function PasswordGenerator(){
      
@@ -48,15 +47,19 @@ function PasswordGenerator(){
 
 
     return(
-        <>
+        <div className="div"> 
+        <div className="center"> <h1>Password Generator</h1> 
+            <div className="inputButtonBox">
         <input 
         type="text"
         value={password}
         name="input"
         readOnly
         ref={passwordRef}
-        onChange={(event) => {setPassword(event.target.value)}} />
-        <button onClick={copyToClipboard}>copy</button>
+        onChange={(event) => {setPassword(event.target.value)}}
+        className="input" />
+        <button onClick={copyToClipboard} className="button">copy</button>
+        </div>
         <input 
         type="range"
         min={10}
@@ -64,21 +67,25 @@ function PasswordGenerator(){
         value={length}
         id="range"
         onChange={(event) => {setLength(event.target.value)}}
-         />
-        <label htmlFor="range">Length: {length}</label>
+        
+         />&nbsp;&nbsp;&nbsp;
+        <label htmlFor="range" className="range">Length: {length}</label><br/><br/>
         <input 
         type="checkbox"
         defaultChecked={number}
         id="num"
-        onChange={() => {setNumber((prev) => !prev )}} />
-        <label htmlFor="num"></label>
+        onChange={() => {setNumber((prev) => !prev )}}
+         />
+        <label htmlFor="num" className="num">Number</label>&nbsp;&nbsp;&nbsp;&nbsp;
         <input 
         type="checkbox"
         defaultChecked={character}
         id="char"
-        onChange={() => {setCharacter((prev) => !prev )}} />
-        <label htmlFor="char"></label>
-        </>    
+        onChange={() => {setCharacter((prev) => !prev )}} 
+        />
+        <label htmlFor="char" className="char">Character</label>
+        </div>
+        </div>    
     )
 }
 
